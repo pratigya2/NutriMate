@@ -1,112 +1,106 @@
+{% load static %}
 <style>
-.container{
-    text-decoration: none;
-    flex: 1 1 0%;
-    position: relative;
-    background-color: #99bbcb;
-    border-radius: 8px;
-    height: 350px;
-    width: 300px;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    -webkit-box-pack: start;
-    justify-content: flex-start;
-    -webkit-box-align: center;
-    align-items: center;
-    padding: 0.5rem;
-    gap: 10px;
-    margin-top: 10%;
-    transition: all 0.3s ease-in-out 0s;
+    .entire {
+        width: 100%;
+        height: 100%;
+        display: block;
+        padding: 20px;
+        background-color: rgb(173, 190, 189);
 
-   }
-   .image{
-    text-decoration: none;
-    flex: 1 1 0%;
-    position: relative;
-    background-color: rgba(56, 43, 47, 0.294);
-    border-radius: 8px;
-    height: 200px;
-    width: 400px;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    -webkit-box-pack: start;
-    justify-content: flex-start;
-    -webkit-box-align: center;
-    align-items: center;
-    padding: 0.5rem;
-    gap: 10px;
-    transition: all 0.3s ease-in-out 0s;
-   }
-   .detail{
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    width: 100%;
-    height: 40%;
-   }
-   .name{
-    font-weight: bold;
-    font-size: 1rem;
-    color: rgb(255, 255, 255);
-    flex: 1 1 0%;
-   }
-   .category{
-    font-size: 0.8rem;
-    color: rgb(255, 255, 255);
-    flex: 1 1 0%;
-   }
-   .display{
-    max-width: 934px;
-    display: flex;
-    flex-wrap: wrap;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
-    gap: 20px;
-   }
+    }
+
+    .image {
+        /* background-color: yellow; */
+        width: 40%;
+        padding: 40PX;
+    }
+
+    .image_container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 70%;
+        height: 300px;
+        justify-content: center;
+        margin: auto;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .qrcode {
+        background-color: rgb(234, 224, 224);
+        width: 40%;
+        padding: 40px;
+    }
+
+    .data {
+        margin-top: 50px;
+        font-size: 30px;
+        font-family:'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+        font-style: oblique;
+        display: block;
+        padding: 10px;
+        width: 60%;
+        color: rgb(113, 50, 50);
+
+    }
+    .ingredients{
+        font-size: 20px;
+        margin-top: 20px;
+        text-overflow: clip;
+    }
+    .category{
+        font-size: 20px;
+    }
 </style>
-{% for i in item %}
-<div class = "image">
-<img src = "{{ i.image.url }}" alt = "">
-</div>
+<div class="entire">
+    {% for i in item %}
 
-<div class = "qrcode">
-
-</div>
-</div>
-<div class = "data">
-    <div class = "ingredients">{{i.ingredients}}
+    <div class='image_container'>
+        <div class="image">
+            <img src="{{ i.image.url }}" alt="">
         </div>
-    {% if m.is_snack %}
-    <div class = "category">
-    It is a snack
-</div>
-    {% endif %}
-    {% if m.is_lunch %}
-    <div class = "category">
-        It is a lunch
+
+        <!-- <div class="qrcode">
+            <img src="{% static path %}" alt="">
+        </div> -->
     </div>
+
+    <div class="data">
+        <h2 style = "text-decoration: underline;">Ingredients</h2>
+        <div class="ingredients">{{i.ingredients}}
+        </div>
+        {% if m.is_snack %}
+        <div class="category">
+            It is a snack
+        </div>
+        {% endif %}
+        {% if m.is_lunch %}
+        <div class="category">
+            It is a lunch
+        </div>
         {% endif %}
         {% if m.is_dinner %}
-    <div class = "category">
-        It is a dinner
-    </div>
+        <div class="category">
+            It is a dinner
+        </div>
         {% endif %}
         {% if m.is_breakfast %}
-    <div class = "category">
-        It is a breakfast
-    </div>
+        <div class="category">
+            It is a breakfast
+        </div>
         {% endif %}
         {% if m.is_confection %}
-    <div class = "category">
-        It is a confection
-    </div>
+        <div class="category">
+            It is a confection
+        </div>
         {% endif %}
-        
-        </div>
-    </div>
-    {{i.ingredients}}
-    {{i.recipe}}
+
+<h2 style = "text-decoration: underline;">Recipe</h2>
+       <div class = "ingredients"> {{i.recipe}}</div>
         {% endfor %}
-        </div>
+    </div>
+</div>

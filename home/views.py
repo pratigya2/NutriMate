@@ -2,16 +2,15 @@ from django.shortcuts import render,redirect, HttpResponseRedirect
 from .models import *
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
-# from django.contrib.auth.decorators import login_required
-# Create your views here
+from .qr import generate
 from .recommend import *
 import json
 import re
-# @login_required(login_url = 'login')
+
 global Meal
 def landing(request):
     context = Ingredients.objects.all()
-    return render(request,'details.html',{'context':context})
+    return render(request,'carousel.html',{'context':context})
 
 def register(request):
     if request.method == 'POST':
@@ -34,7 +33,7 @@ def loginpage(request):
         user = authenticate(request,username=username,password = password)
         if user is not None:
             login(request,user)
-            return redirect('home')
+            return redirect('about')
         else:
             return HttpResponse("incorrect")
     return render(request,'login.html')
@@ -44,8 +43,6 @@ def logoutpage(request):
     return redirect('login')
 def about(request):
     return render(request,'carousel.html')
-def recommendation(request):
-    return render(request,'recommendation.html')
 def restriction(request):
     if request.method == 'POST':
         gluton = request.POST.get('gluten')
@@ -70,20 +67,20 @@ def restriction(request):
 def index(request):
     data = request.session.get('meals')
     meals = []
-    # print(meals)
-    # # use regular expression to extract the list
-    # pattern = r'\[([\w\s()]+)\]'
-    # match = re.search(pattern, Meal)
-
     for meal in data:
         meals.append(list(Ingredients.objects.filter(name = meal).values()))
-        # print(food)
+
     print(meals)
 
     return render(request,'index.html',{'meals':meals})
 
 def detail(request,slug):
     item = Ingredients.objects.filter(id = slug)
-    return render(request,'detail.html',{'item':item})
-
+    name = Ingredients.objects.values('name').get(id=slug)['name']
+    print(name)
+    link = Ingredients.objects.values('meal_link').get(id=slug)['meal_link']
+    path = name+".png"
+    new = generate(name,link,path)
+    print(new)
+    return render(request,'detail.html',{'item': item})
 # Create your views here.

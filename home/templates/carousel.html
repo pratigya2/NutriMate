@@ -1,52 +1,75 @@
 {% extends "home.html" %}
 {% block content %}
+<style>
+    .but{
+        
+        margin-top: 50px;
+        align-items: center;
+        margin-left: auto;
+        left: 50%;
+        position: absolute;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        display: block;
+        padding: 0px;
+        width: 150px;
+        height: 50px;
+        border: 2px #873007 solid;
+        border-radius: 20px;
+        color: #fff;
+        background: #131d4a;
+    }
+
+    .but:hover {
+        background: rgb(19, 128, 62);
+        box-shadow: 0 3px 0 0 rgb(168, 174, 84);
+        color: white;
+    }
+
+    .but:focus {
+        background: #2cd743;
+
+    }
+    
+</style>
 
 <div class="owl-carousel owl-theme mt-5">
     <div class="owl-item">
         <div class="card">
             <div class="img-card">
-                <img src="static/login.png"
+                <img src="static/first.png"
                     alt="">
             </div>
             <div class="testimonial mt-4 mb-2">
-                Automatic License Plate Detection Identifies the license plate of a vehicle and extracts characters from it.
+                Select Food based on Your restrictions 
             </div>
         </div>
     </div>
     <div class="card">
         <div class="img-card">
-            <img src="static/login.png"
+            <img src="static/second.png"
                 alt="">
         </div>
         <div class="testimonial mt-4 mb-2">
-            Can be used in law enforcement, toll collection, parking management, and traffic surveillance systems.
+            Your One solution to select Nepali Meals.
         </div>
     </div>
     <div class="card">
         <div class="img-card">
-            <img src="static/login.png"
+            <img src="static/third.png"
                 alt="">
         </div>
         <div class="testimonial mt-4 mb-2">
-           Allows to upload image or video of vehicle for inference.
+            Your One solution to select Nepali Meals
         </div>
     </div>
     <div class="card">
         <div class="img-card">
-            <img src="static/login.png"
+            <img src="static/fourth.png"
                 alt="">
         </div>
         <div class="testimonial mt-4 mb-2">
-           Gives multiple detected license plate from a image or video.
-        </div>
-    </div>
-    <div class="card">
-        <div class="img-card">
-            <img src="static/login.png"
-                alt="">
-        </div>
-        <div class="testimonial mt-4 mb-2">
-           Gives multiple detected license plate from a image or video.
+            Healthy eating made easy with our personalized meal recommendations.
         </div>
     </div>
 </div>
