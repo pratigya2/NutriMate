@@ -1,2 +1,2 @@
-# NutriMata
+# NutriMate
 Meal Recommendation
