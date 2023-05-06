@@ -1,21 +1,22 @@
-# NutriMate
-Meal Recommention System
-This project is built using Django and is designed to recommend Nepali food options based on specific dietary requirements, such as gluten-free, sugar-free, keto, vegetarian, dairy-free, and paleo. Users can input their dietary preferences and receive personalized food recommendations, along with recipes, ingredients, and order links.
+#NutriMate - Nepali Meal Recommendation System
+NutriMate is a Django-based meal recommendation system that offers personalized food recommendations for Nepali cuisine based on specific dietary requirements. The system provides customized meal plans, grocery lists, and recipe suggestions using advanced machine learning algorithms, taking into account each user's unique dietary needs, food preferences, and health goals.
 
-Our meal recommendation system provides personalized meal plans based on the user's dietary restrictions, food preferences, and health goals. With thousands of recipes to choose from, our platform generates shopping lists for each week's meals, making it easy for users to plan their meals ahead of time and stick to their chosen diet plan.
+#Features
+Personalized meal plans based on dietary restrictions, food preferences, and health goals
+Thousands of recipes to choose from
+Customized grocery lists for each week's meals
+Social component for sharing and discovering new recipes
+Explanation of each dietary category for informed decision-making
+User-friendly interface designed for easy navigation
+Customer support and tutorials available
+#Data
+The data used in NutriMate comes from various sources, including Nepali food recipe and order data that has been cleaned and preprocessed using Python's pandas library.
 
-Using advanced machine learning algorithms, our platform creates custom meal plans, grocery lists, and recipe suggestions based on each user's unique taste preferences, dietary needs, and lifestyle. We take into account factors such as food allergies, intolerances, and specific health goals to provide tailored recommendations that are both delicious and nutritious.
+#Model
+NutriMate uses a Nearest Neighbors (NN) algorithm to recommend food options based on user input. The system takes into account factors such as food allergies, intolerances, and specific health goals to provide tailored recommendations that are both delicious and nutritious.
 
-In addition to our personalized meal plans, our platform also offers a social component, allowing users to share and discover new recipes with other members of the community. Users can search for and filter recipes based on their dietary needs and restrictions, making it easy to find meals that suit their tastes and nutritional requirements.
+#Future Plans
+In the future, we plan to expand NutriMate by adding new food items and recipes to our database, as well as partnering with more companies and experts in the nutrition and food industries. We also hope to eventually offer personalized meal planning and delivery services based on user preferences and dietary needs.
 
-We understand that not all users may be familiar with terms like gluten-free, keto, or paleo, so we provide a brief explanation of each dietary category on our platform. This helps users understand what each category entails and make more informed decisions about their food choices.
-
-We are committed to making our platform accessible to users of all ages and technological proficiencies. Our user interface is designed to be intuitive and easy to navigate, and we offer customer support and tutorials to help users with any issues they may encounter.
-
-In the future, we plan to expand our platform by adding new food items and recipes to our database, as well as partnering with more companies and experts in the nutrition and food industries. We also hope to eventually offer personalized meal planning and delivery services based on user preferences and dietary needs.
-
-Data
-The data used in this project comes from various sources, including Nepali food recipe and order data was cleaned and preprocessed using Python's pandas library.
-
-Model
-This project uses a Nearest Neighbors (NN) algorithm to recommend food options based on user input.
+Support
+If you have any questions or issues with NutriMate,you can create an issue.
