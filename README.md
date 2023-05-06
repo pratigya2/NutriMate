@@ -1,5 +1,6 @@
 # NutriMate
-This project is designed to recommend Nepali food options based on specific dietary requirements, such as gluten-free, sugar-free, keto, vegetarian, dairy-free, and paleo. Users can input their dietary preferences and receive personalized food recommendations, along with recipes, ingredients, and order links.
+Meal Recommention System
+This project is built using Django and is designed to recommend Nepali food options based on specific dietary requirements, such as gluten-free, sugar-free, keto, vegetarian, dairy-free, and paleo. Users can input their dietary preferences and receive personalized food recommendations, along with recipes, ingredients, and order links.
 
 Our meal recommendation system provides personalized meal plans based on the user's dietary restrictions, food preferences, and health goals. With thousands of recipes to choose from, our platform generates shopping lists for each week's meals, making it easy for users to plan their meals ahead of time and stick to their chosen diet plan.
 
@@ -13,4 +14,8 @@ We are committed to making our platform accessible to users of all ages and tech
 
 In the future, we plan to expand our platform by adding new food items and recipes to our database, as well as partnering with more companies and experts in the nutrition and food industries. We also hope to eventually offer personalized meal planning and delivery services based on user preferences and dietary needs.
 
+Data
+The data used in this project comes from various sources, including Nepali food recipe and order data was cleaned and preprocessed using Python's pandas library.
 
+Model
+This project uses a Nearest Neighbors (NN) algorithm to recommend food options based on user input.
