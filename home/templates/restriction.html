@@ -347,14 +347,14 @@ input:checked + .slider:before {
 <div class="tab">
     <p class="name">Veg</p>
     <label class="switch">
-        <input type="checkbox" name = "veg" id = "toggle">
+        <input type="checkbox" name = "veg" id = "toggle1">
         <span class="slider round"></span>
       </label>
 </div>
 <div class="tab">
     <p class="name">Dairy Free</p>
     <label class="switch">
-        <input type="checkbox" name = "dairy" id = "toggle">
+        <input type="checkbox" name = "dairy" id = "toggle2">
         <span class="slider round"></span>
       </label>
 </div>
@@ -384,7 +384,7 @@ input:checked + .slider:before {
 <div class = "tab">
     <p class="name">Oil Free</p>
 <label class="switch">
-    <input type="checkbox" name = "oily" id = "toggle" value = "0">
+    <input type="checkbox" name = "oily" id = "toggle3" value = "0">
     <span class="slider round"></span>
   </label>
  </div>
@@ -415,43 +415,31 @@ input:checked + .slider:before {
   </script>
 {% endif %}
 <script>
-    const toggleSwitch = document.querySelector('#toggle');
-
-toggleSwitch.addEventListener('change', function() {
+var toggleSwitch1 = document.querySelector('#toggle1');
+var toggleSwitch2 = document.querySelector('#toggle2');
+var toggleSwitch3 = document.querySelector('#toggle3');
+toggleSwitch1.addEventListener('change', function() {
   if (this.checked) {
     this.value = '1';
   } else {
     this.value = '0';
   }
 });
-    function valid() {
-  var gluten = document.forms.myform.gluten.value;
-  var keto = document.forms.myform.keto.value;
-  var veg = document.forms.myform.veg.value;
-  var sugar = document.forms.myform.sugar.value;
+toggleSwitch2.addEventListener('change', function() {
+  if (this.checked) {
+    this.value = '1';
+  } else {
+    this.value = '0';
+  }
+});
+toggleSwitch3.addEventListener('change', function() {
+  if (this.checked) {
+    this.value = '1';
+  } else {
+    this.value = '0';
+  }
+});
 
-
-  if (gluten == "") {
-    alert("Incomplete Form");
-    return false;
-  }
-  else if (sugar == "") {
-    alert("Incomplete Form");
-    return false;
-  }
-  else if (keto == "") {
-    alert("Incomplete Form");
-    return false;
-  }
-  else if (veg == "") {
-    alert("Incomplete Form");
-    return false;
-  }
-  else{
-    return True;
-  }
-
-}
     $('#b').hide();
     var currentTab = 0; // Current tab is set to be the first tab (0)
     showTab(currentTab); // Display the current tab
@@ -516,6 +504,7 @@ toggleSwitch.addEventListener('change', function() {
         // var status = validateForm();
         form = document.getElementById("regForm");
         data = form.s
+        console.log(data)
         document.getElementById("regForm").submit();
 
 

@@ -1,0 +1,113 @@
+{% extends "home.html" %}
+{% block content %}
+<style>
+   .container{
+    text-decoration: none;
+    flex: 1 1 0%;
+    position: relative;
+    background-color: #99bbcb;
+    border-radius: 8px;
+    height: 350px;
+    width: 300px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 0.5rem;
+    gap: 10px;
+    margin-top: 10%;
+    transition: all 0.3s ease-in-out 0s;
+
+   }
+   .image{
+    text-decoration: none;
+    flex: 1 1 0%;
+    position: relative;
+    background-color: rgba(56, 43, 47, 0.294);
+    border-radius: 8px;
+    height: 280px;
+    width: 250px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 0.5rem;
+    gap: 10px;
+    transition: all 0.3s ease-in-out 0s;
+   }
+   .detail{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    height: 40%;
+   }
+   .name{
+    font-weight: bold;
+    font-size: 1rem;
+    color: rgb(255, 255, 255);
+    flex: 1 1 0%;
+   }
+   .category{
+    font-size: 0.8rem;
+    color: rgb(255, 255, 255);
+    flex: 1 1 0%;
+   }
+   .display{
+    max-width: 934px;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    gap: 20px;
+   }
+</style>
+<div class = "display">
+{%for meal in meals %}
+{% for m in meal %}
+{% if m %}
+<a class = "container" style="text-decoration: none" href = "{% url 'detail' m.id %}">
+<img class = "image" src = "{{'/media/'|add:m.image}}">
+<div class = "detail">
+    <div  class = "name">
+        {{m.name}}
+    </div>
+            {% if m.is_snack %}
+            <div class = "category">
+            It is a snack
+        </div>
+            {% endif %}
+            {% if m.is_lunch %}
+            <div class = "category">
+                It is a lunch
+            </div>
+                {% endif %}
+                {% if m.is_dinner %}
+            <div class = "category">
+                It is a dinner
+            </div>
+                {% endif %}
+                {% if m.is_breakfast %}
+            <div class = "category">
+                It is a breakfast
+            </div>
+                {% endif %}
+                {% if m.is_confection %}
+            <div class = "category">
+                It is a confection
+            </div>
+                {% endif %}
+        </div>
+        </a>
+        {% endif %}
+{% endfor %}
+{% endfor %}
+</div>
+
+{% endblock content%}

@@ -1,0 +1,12 @@
+<h1>Hello i am pratigya</h1>
+<p>
+    <ul>
+        {%for c in context %}
+    <li> {{c.name}}</li>
+    <li> {{c.ingredients}}</li>
+    <li>
+        <img src = "{{ c.image.url }}" alt = "">
+    </li>
+    {% endfor %}
+
+    </ul>

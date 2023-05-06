@@ -1,15 +1,17 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, HttpResponseRedirect
 from .models import *
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 # from django.contrib.auth.decorators import login_required
 # Create your views here
-
+from .recommend import *
+import json
+import re
 # @login_required(login_url = 'login')
-global gluton,keto,sugar,veg
+global Meal
 def landing(request):
     context = Ingredients.objects.all()
-    return render(request,'home.html',{'context':context})
+    return render(request,'details.html',{'context':context})
 
 def register(request):
     if request.method == 'POST':
@@ -40,7 +42,10 @@ def loginpage(request):
 def logoutpage(request):
     logout(request)
     return redirect('login')
-
+def about(request):
+    return render(request,'carousel.html')
+def recommendation(request):
+    return render(request,'recommendation.html')
 def restriction(request):
     if request.method == 'POST':
         gluton = request.POST.get('gluten')
@@ -56,9 +61,29 @@ def restriction(request):
             dairy = 0.5
         if not oily:
             oily = 0.5
-        print(gluton,sugar,keto,veg,dairy,paleo,oily)
+        Input = [gluton,sugar,keto,veg,dairy,paleo,oily]
+        Meal = implementation(Input)
+        request.session['meals'] = Meal
+        return HttpResponseRedirect('index')
+        
     return render(request,'restriction.html')
-def about(request):
-    return render(request,'carousel.html')
+def index(request):
+    data = request.session.get('meals')
+    meals = []
+    # print(meals)
+    # # use regular expression to extract the list
+    # pattern = r'\[([\w\s()]+)\]'
+    # match = re.search(pattern, Meal)
+
+    for meal in data:
+        meals.append(list(Ingredients.objects.filter(name = meal).values()))
+        # print(food)
+    print(meals)
+
+    return render(request,'index.html',{'meals':meals})
+
+def detail(request,slug):
+    item = Ingredients.objects.filter(id = slug)
+    return render(request,'detail.html',{'item':item})
 
 # Create your views here.
