@@ -48,3 +48,4 @@ arrays= np.array(arrays)
 df = pd.DataFrame(arrays, columns=cols)
 df.to_csv('dataset_user.csv', index=False)
 print('dONE')
+#Done
