@@ -1,22 +1,67 @@
-{% extends "base.html" %}
+{% extends "home.html" %}
 {% block content %}
 <style>
-    .name {
-        font-style: oblique;
-        color: #3f0e1a;
-        position: absolute;
-        bottom: 380px;
-        left: 35%;
-        color: #31101a;
-        font-size: 1.1rem;
-        font-weight: 600;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-        background-color: rgb(201, 222, 13);
-        padding: 0.3rem 0.4rem;
-        border-radius: 5px;
-        box-shadow: 2px 3px 15px #384074;
-    }
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
 
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
     label {
         display: flex;
         cursor: pointer;
@@ -74,27 +119,49 @@
         }
     }
     .container{
-    width : 450x;
-    padding : 75px;
-    border-radius: 10px;
-    background: transparent;
-    display: flex;
-    min-height: 200px;
-    margin : 5px 2px;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    border-radius: 10px;
-    border: 2px solid #471017;
+    margin: 100px;
+    width: 40%;
+    height: auto;
+  padding: 75px;
+  border-radius: 10px;
+  background: transparent;
+  display: flex;
+  min-height: 200px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 10px;
+  border: 2px solid #471017;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-.container header{
-    color :#f3f3f5;
-    font-size :27px;
-    font-weight: 600;
-    text-align: center;
-    font-family: "Open Sans", Helvetica, sans-serif
+.container header {
+  justify-content: center;
+  color: #f3f3f5;
+  font-size: 27px;
+  font-weight: 600;
+  text-align: center;
+  align-items: center;
+  font-family: "Open Sans", Helvetica, sans-serif;
 }
-
+.name {
+  display: block;
+  transform: translate(-50%,-50%);
+  font-style: oblique;
+  color: #280b12;
+  position: absolute;
+  bottom: 400px;
+  left: 50%;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: rgb(92, 140, 151);
+  padding: 0.3rem 0.4rem;
+  border-radius: 5px;
+  box-shadow: 2px 3px 15px #384074;
+}
 
 
 
@@ -110,12 +177,18 @@
         padding: 30px;
         height: 300px;
         width: 300px;
-        margin-left: 500px;
         position: relative;
         color: transparent;
         border-width: 2px;
         border-radius: 10px;
         border-color: #3f0e1a;
+    }
+    header{
+    color :#3c1b1f !important;
+    font-size :27px;
+    font-weight: 600;
+    text-align: center;
+    font-family: "Open Sans", Helvetica, sans-serif
     }
 
     /* Make circles that indicate the steps of the form: */
@@ -139,7 +212,36 @@
     .step.finish {
         background-color: #04AA6D;
     }
+    .next_button{
+    background-color: rgb(53, 11, 11);
+    color: #fff;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 0px 1rem;
+    height: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out 0s;
 
+    &:hover{
+        background-color: #3f784e;
+
+    }
+    }
+    .previous_button{
+    background-color: rgb(53, 11, 11);
+    color: #fff;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 0px 1rem;
+    height: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out 0s;
+
+    &:hover{
+        background-color: #3f784e;
+
+    }
+    }
     #b {
         margin-top: 50px;
         align-items: center;
@@ -155,7 +257,7 @@
         border: 2px #873007 solid;
         border-radius: 20px;
         color: #fff;
-        background: #101c81;
+        background: #131d4a;
     }
 
     #b:hover {
@@ -242,34 +344,55 @@
         <span class="but">Very High</span>
     </label>
 </div>
-<div class="tab veg">
+<div class="tab">
     <p class="name">Veg</p>
+    <label class="switch">
+        <input type="checkbox" name = "veg" id = "toggle">
+        <span class="slider round"></span>
+      </label>
+</div>
+<div class="tab">
+    <p class="name">Dairy Free</p>
+    <label class="switch">
+        <input type="checkbox" name = "dairy" id = "toggle">
+        <span class="slider round"></span>
+      </label>
+</div>
+<div class="tab">
+    <p class="name">Paleo</p>
     <label>
-        <input type="radio" value="0.1" name="veg" />
+        <input type="radio" value="0.1" name="paleo" />
         <span class="but">Very Low</span>
     </label>
     <label>
-        <input type="radio" value="0.3" name="veg" />
+        <input type="radio" value="0.3" name="paleo" />
         <span class="but">Low</span>
     </label>
     <label>
-        <input type="radio" value="0.5" name="veg" />
+        <input type="radio" value="0.5" name="paleo" />
         <span class="but">Medium</span>
     </label>
     <label>
-        <input type="radio" value="0.7" name="veg" />
+        <input type="radio" value="0.7" name="paleo" />
         <span class="but">High</span>
     </label>
     <label>
-        <input type="radio" value="0.9" name="veg" />
+        <input type="radio" value="0.9" name="paleo" />
         <span class="but">Very High</span>
     </label>
 </div>
+<div class = "tab">
+    <p class="name">Oil Free</p>
+<label class="switch">
+    <input type="checkbox" name = "oily" id = "toggle" value = "0">
+    <span class="slider round"></span>
+  </label>
+ </div>
 
 <div style="overflow:auto;">
     <div style="float:right;">
-        <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-        <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+        <button type="button" id="prevBtn" onclick="nextPrev(-1)" class = "previous_button">Previous</button>
+        <button type="button" id="nextBtn" onclick="nextPrev(1)" class = "next_button">Next</button>
     </div>
 </div>
 
@@ -279,8 +402,11 @@
     <span class="step"></span>
     <span class="step"></span>
     <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
 </div>
-<button type="button" onclick="submitprompt()" id="b">Get Started</button>
+<button type="button" onclick="submitprompt()" id="b">View Recommendations</button>
 </form>
 </div>
 {% if error %}
@@ -289,6 +415,15 @@
   </script>
 {% endif %}
 <script>
+    const toggleSwitch = document.querySelector('#toggle');
+
+toggleSwitch.addEventListener('change', function() {
+  if (this.checked) {
+    this.value = '1';
+  } else {
+    this.value = '0';
+  }
+});
     function valid() {
   var gluten = document.forms.myform.gluten.value;
   var keto = document.forms.myform.keto.value;
@@ -395,14 +530,4 @@
         x[n].className += " active";
     }
 </script>
-
-
-
-
-
-
-
-
-
-
 {% endblock content%}

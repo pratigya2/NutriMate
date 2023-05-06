@@ -46,17 +46,17 @@ def restriction(request):
         gluton = request.POST.get('gluten')
         sugar = request.POST.get('sugar')
         keto= request.POST.get('keto')
-        # paleo = request.POST.get('paleo')
         veg = request.POST.get('veg')
-        if not gluton:
-            gluton = 0.5
-        if not keto:
-            keto = 0.5
+        dairy = request.POST.get('dairy')
+        paleo = request.POST.get('paleo')
+        oily = request.POST.get('oily')
         if not veg:
             veg = 0.5
-        if not sugar:
-            sugar = 0.5
-        print(gluton,sugar,keto,veg)
+        if not dairy:
+            dairy = 0.5
+        if not oily:
+            oily = 0.5
+        print(gluton,sugar,keto,veg,dairy,paleo,oily)
     return render(request,'restriction.html')
 def about(request):
     return render(request,'carousel.html')
