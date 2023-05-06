@@ -1,5 +1,5 @@
 # NutriMate
- NutriMate is a Meal Recommendation for Nepali Meals  based on the user preference
+ NutriMate is a Meal Recommendation for Nepali Meals  based on the user preference.
 
 Our meal recommendation system provides personalized meal plans based on the user's dietary restrictions, food preferences, and health goals. With thousands of recipes to choose from, our platform generates shopping lists for each week's meals, making it easy for users to plan their meals ahead of time and stick to their chosen diet plan.
 
