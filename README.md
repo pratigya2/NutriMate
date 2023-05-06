@@ -9,6 +9,7 @@ Social component for sharing and discovering new recipes
 Explanation of each dietary category for informed decision-making
 User-friendly interface designed for easy navigation
 Customer support and tutorials available
+
 ## Data
 The data used in NutriMate comes from various sources, including Nepali food recipe and order data that has been cleaned and preprocessed using Python's pandas library.
 
