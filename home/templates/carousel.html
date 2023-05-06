@@ -1,0 +1,79 @@
+{% extends "home.html" %}
+{% block content %}
+
+<div class="owl-carousel owl-theme mt-5">
+    <div class="owl-item">
+        <div class="card">
+            <div class="img-card">
+                <img src="static/login.png"
+                    alt="">
+            </div>
+            <div class="testimonial mt-4 mb-2">
+                Automatic License Plate Detection Identifies the license plate of a vehicle and extracts characters from it.
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="img-card">
+            <img src="static/login.png"
+                alt="">
+        </div>
+        <div class="testimonial mt-4 mb-2">
+            Can be used in law enforcement, toll collection, parking management, and traffic surveillance systems.
+        </div>
+    </div>
+    <div class="card">
+        <div class="img-card">
+            <img src="static/login.png"
+                alt="">
+        </div>
+        <div class="testimonial mt-4 mb-2">
+           Allows to upload image or video of vehicle for inference.
+        </div>
+    </div>
+    <div class="card">
+        <div class="img-card">
+            <img src="static/login.png"
+                alt="">
+        </div>
+        <div class="testimonial mt-4 mb-2">
+           Gives multiple detected license plate from a image or video.
+        </div>
+    </div>
+    <div class="card">
+        <div class="img-card">
+            <img src="static/login.png"
+                alt="">
+        </div>
+        <div class="testimonial mt-4 mb-2">
+           Gives multiple detected license plate from a image or video.
+        </div>
+    </div>
+</div>
+<a href = "upload"><button type="button" class = "but">Get Started</button></a>
+<script>
+    $(document).ready(function () {
+    var silder = $(".owl-carousel");
+    silder.owlCarousel({
+        autoplay: true,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: false,
+        items: 1,
+        stagePadding: 20,
+        center: true,
+        nav: false,
+        margin: 50,
+        dots: true,
+        loop: true,
+        responsive: {
+            0: { items: 1 },
+            480: { items: 2 },
+            575: { items: 2 },
+            768: { items: 2 },
+            991: { items: 3 },
+            1200: { items: 4 }
+        }
+    });
+});
+</script>
+{% endblock content%}

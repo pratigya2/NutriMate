@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+{% block content %}
+<style media="screen">
+    *,
+*:before,
+*:after{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+form{
+    height: 600px;
+    width: 400px;
+    margin-top: 70px;
+    background-color: transparent;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid #660e22;
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+    overflow-x: hidden;
+}
+form *{
+    font-family: 'Poppins',sans-serif;
+    color: #3e0e0edb;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+form h3{
+    font-size: 32px;
+    letter-spacing: 0.05rem;
+    text-align: center;
+    display: block;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size:30px;
+    color: #260d0d;
+}
+
+label{
+    display: block;
+    margin-top: 30px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    font-weight: 500;  
+    letter-spacing: 0.05rem;
+    color: #260d0d;
+}
+input{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: #eee7e7;
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    margin-left: 6px;
+    font-size: 14px;
+    font-weight: 300;
+}
+::placeholder{
+    color: #260d0d;
+}
+.input-icons i {
+            position: absolute;
+        }
+          
+        .input-icons {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+          
+        .icon {
+            padding: 10px;
+            color: #5b1c1c;
+            min-width: 50px;
+            text-align: center;
+        }
+    button{
+    margin-top: 40px;
+    margin-left:80px;
+    width: 50%;
+    background-color: #660e22;
+    color: #e4e2e2;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.25s ease;
+
+    &:hover{
+        background-color: #3f784e;
+
+    }
+}
+.social{
+  margin-top: 30px;
+  display: flex;
+}
+.social div{
+  background: red;
+  width: 150px;
+  border-radius: 3px;
+  padding: 5px 10px 10px 5px;
+  background-color: rgba(255,255,255,0.27);
+  color: #eaf0fb;
+  text-align: center;
+}
+.social div:hover{
+  background-color: rgba(255,255,255,0.47);
+}
+.social .fb{
+  margin-left: 25px;
+}
+.social i{
+  margin-right: 4px;
+}
+</style>
+<div class = "root">
+    <div class = "inner">
+    <div class="background">
+<div class = "register">
+<form action="" method="post">
+    {% csrf_token %} 
+    <h3>Signup Here</h3>
+    <div class="input-icons">
+    <label for="username">Username</label>
+    <i class="fa-solid fa-user"></i>
+    <input type="text" placeholder="Username" name="username" id="username">
+</div>
+
+<div class="input-icons">
+    <label for="email">Email</label>
+    <i class="fa-solid fa-envelope"></i>
+    <input type="email" placeholder="Email or Phone" name="email" id="email">
+</div>
+
+    <div class="input-icons">
+    <label for="password1">Password</label>
+    <i class="fa-solid fa-lock"></i>
+    <input type="password" placeholder="Password" id="password1" name="password1">
+</div>
+
+    <div class="input-icons">
+    <label for="password2">Confrom Password</label>
+    <i class="fa-solid fa-lock"></i>
+    <input type="password" placeholder="Confrom Password" id="password2" name="password2">
+</div>
+<a href="{% url 'login' %}" >I already have account</a>
+    <button type="submit">Signup</button>
+</form>
+</div>
+</div>
+</div>
+
+{% endblock content%}

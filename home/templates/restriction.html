@@ -1,0 +1,408 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+    .name {
+        font-style: oblique;
+        color: #3f0e1a;
+        position: absolute;
+        bottom: 380px;
+        left: 35%;
+        color: #31101a;
+        font-size: 1.1rem;
+        font-weight: 600;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        background-color: rgb(201, 222, 13);
+        padding: 0.3rem 0.4rem;
+        border-radius: 5px;
+        box-shadow: 2px 3px 15px #384074;
+    }
+
+    label {
+        display: flex;
+        cursor: pointer;
+        font-weight: 500;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 0.375em;
+        color: #3f0e1a;
+    }
+
+    /* Style the input fields */
+    input {
+        padding: 10px;
+        width: 100%;
+        font-size: 17px;
+        font-family: Raleway;
+        border: 1px solid #aaaaaa;
+    }
+
+    input {
+        position: absolute;
+        left: -9999px;
+
+        &:checked+.but {
+            background-color: mix(#fff, #1d3e27, 84%);
+
+            &:before {
+                box-shadow: inset 0 0 0 0.4375em #1d3e27;
+            }
+        }
+    }
+
+    .but {
+        display: flex;
+        align-items: center;
+        padding: 0.375em 0.75em 0.375em 0.375em;
+        border-radius: 99em;
+        transition: 0.25s ease;
+
+        &:hover {
+            background-color: mix(#fff, #1d3e27, 84%);
+        }
+
+        &:before {
+            display: flex;
+            flex-shrink: 0;
+            content: "";
+            background-color: #fff;
+            width: 1.5em;
+            height: 1.5em;
+            border-radius: 50%;
+            margin-right: 0.375em;
+            transition: 0.25s ease;
+            box-shadow: inset 0 0 0 0.125em #1d3e27;
+        }
+    }
+    .container{
+    width : 450x;
+    padding : 75px;
+    border-radius: 10px;
+    background: transparent;
+    display: flex;
+    min-height: 200px;
+    margin : 5px 2px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+    border: 2px solid #471017;
+}
+.container header{
+    color :#f3f3f5;
+    font-size :27px;
+    font-weight: 600;
+    text-align: center;
+    font-family: "Open Sans", Helvetica, sans-serif
+}
+
+
+
+
+    /* Mark input boxes that gets an error on validation: */
+    input.invalid {
+        background-color: #ffdddd;
+    }
+
+    /* Hide all steps by default: */
+    .tab {
+        display: none;
+        margin-top: 50px;
+        padding: 30px;
+        height: 300px;
+        width: 300px;
+        margin-left: 500px;
+        position: relative;
+        color: transparent;
+        border-width: 2px;
+        border-radius: 10px;
+        border-color: #3f0e1a;
+    }
+
+    /* Make circles that indicate the steps of the form: */
+    .step {
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #31101a;
+        border: none;
+        border-radius: 50%;
+        display: inline-block;
+        opacity: 0.5;
+    }
+
+    /* Mark the active step: */
+    .step.active {
+        opacity: 2;
+    }
+
+    /* Mark the steps that are finished and valid: */
+    .step.finish {
+        background-color: #04AA6D;
+    }
+
+    #b {
+        margin-top: 50px;
+        align-items: center;
+        margin-left: auto;
+        left: 50%;
+        position: absolute;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        display: block;
+        padding: 0px;
+        width: 150px;
+        height: 50px;
+        border: 2px #873007 solid;
+        border-radius: 20px;
+        color: #fff;
+        background: #101c81;
+    }
+
+    #b:hover {
+        background: rgb(19, 128, 62);
+        box-shadow: 0 3px 0 0 rgb(168, 174, 84);
+        color: white;
+    }
+
+    #b:focus {
+        background: #2cd743;
+
+    }
+</style>
+<div class=container>
+    <form id="regForm" action="" method="POST" onsubmit="return valid()" name = "myform">
+        {% csrf_token %}
+        <header> Diet Restriction</header>
+        <div class="tab">
+            <p class="name">Gluten Free</p>
+            <label>
+                <input type="radio" value="0.1" name="gluten" />
+                <span class="but">Very Low</span>
+            </label>
+            <label>
+                <input type="radio" value="0.3" name="gluten" />
+                <span class="but">Low</span>
+            </label>
+            <label>
+                <input type="radio" value="0.5" name="gluten" />
+                <span class="but">Medium</span>
+            </label>
+            <label>
+                <input type="radio" value="0.7" name="gluten" />
+                <span class="but">High</span>
+            </label>
+            <label>
+                <input type="radio" value="0.9" name="gluten" />
+                <span class="but">Very High</span>
+            </label>
+        </div>
+<div class="tab">
+    <p class="name">Sugar Free</p>
+    <label>
+        <input type="radio" value="0.1" name="sugar" />
+        <span class="but">Very Low</span>
+    </label>
+    <label>
+        <input type="radio" value="0.3" name="sugar" />
+        <span class="but">Low</span>
+    </label>
+    <label>
+        <input type="radio" value="0.5" name="sugar" />
+        <span class="but">Medium</span>
+    </label>
+    <label>
+        <input type="radio" value="0.7" name="sugar" />
+        <span class="but">High</span>
+    </label>
+    <label>
+        <input type="radio" value="0.9" name="sugar" />
+        <span class="but">Very High</span>
+    </label>
+</div>
+<div class="tab">
+    <p class="name">Keto</p>
+    <label>
+        <input type="radio" value="0.1" name="keto" />
+        <span class="but">Very Low</span>
+    </label>
+    <label>
+        <input type="radio" value="0.3" name="keto" />
+        <span class="but">Low</span>
+    </label>
+    <label>
+        <input type="radio" value="0.5" name="keto" />
+        <span class="but">Medium</span>
+    </label>
+    <label>
+        <input type="radio" value="0.7" name="keto" />
+        <span class="but">High</span>
+    </label>
+    <label>
+        <input type="radio" value="0.9" name="keto" />
+        <span class="but">Very High</span>
+    </label>
+</div>
+<div class="tab veg">
+    <p class="name">Veg</p>
+    <label>
+        <input type="radio" value="0.1" name="veg" />
+        <span class="but">Very Low</span>
+    </label>
+    <label>
+        <input type="radio" value="0.3" name="veg" />
+        <span class="but">Low</span>
+    </label>
+    <label>
+        <input type="radio" value="0.5" name="veg" />
+        <span class="but">Medium</span>
+    </label>
+    <label>
+        <input type="radio" value="0.7" name="veg" />
+        <span class="but">High</span>
+    </label>
+    <label>
+        <input type="radio" value="0.9" name="veg" />
+        <span class="but">Very High</span>
+    </label>
+</div>
+
+<div style="overflow:auto;">
+    <div style="float:right;">
+        <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+        <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+    </div>
+</div>
+
+<!-- Circles which indicates the steps of the form: -->
+<div style="text-align:center;margin-top:40px;">
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+</div>
+<button type="button" onclick="submitprompt()" id="b">Get Started</button>
+</form>
+</div>
+{% if error %}
+  <script>
+    alert('{{ error }}');
+  </script>
+{% endif %}
+<script>
+    function valid() {
+  var gluten = document.forms.myform.gluten.value;
+  var keto = document.forms.myform.keto.value;
+  var veg = document.forms.myform.veg.value;
+  var sugar = document.forms.myform.sugar.value;
+
+
+  if (gluten == "") {
+    alert("Incomplete Form");
+    return false;
+  }
+  else if (sugar == "") {
+    alert("Incomplete Form");
+    return false;
+  }
+  else if (keto == "") {
+    alert("Incomplete Form");
+    return false;
+  }
+  else if (veg == "") {
+    alert("Incomplete Form");
+    return false;
+  }
+  else{
+    return True;
+  }
+
+}
+    $('#b').hide();
+    var currentTab = 0; // Current tab is set to be the first tab (0)
+    showTab(currentTab); // Display the current tab
+
+    function showTab(n) {
+        // This function will display the specified tab of the form...
+        var x = document.getElementsByClassName("tab");
+        x[n].style.display = "block";
+        //... and fix the Previous/Next buttons:
+        if (n == 0) {
+            document.getElementById("prevBtn").style.display = "none";
+        } else {
+            document.getElementById("prevBtn").style.display = "inline";
+        }
+        if (n == (x.length - 1)) {
+            document.getElementById("nextBtn").setAttribute("hidden", "True");
+            $('#b').show();
+        } else {
+            document.getElementById("nextBtn").innerHTML = "Next";
+        }
+        //... and run a function that will display the correct step indicator:
+        fixStepIndicator(n)
+    }
+
+    function nextPrev(n) {
+        // This function will figure out which tab to display
+        var x = document.getElementsByClassName("tab");
+        // Exit the function if any field in the current tab is invalid:
+        
+        // Hide the current tab:
+        x[currentTab].style.display = "none";
+        // Increase or decrease the current tab by 1:
+        currentTab = currentTab + n;
+        // if you have reached the end of the form...
+        if (currentTab >= x.length) {
+            // ... the form gets submitted:
+            document.getElementById("regForm").submit();
+            return false;
+        }
+        // Otherwise, display the correct tab:
+        showTab(currentTab);
+    }
+
+    function validateForm() {
+        // This function deals with validation of the form fields
+        var x, y, i, valid = false;
+        x = document.getElementsByClassName("tab");
+        for (j = 0; j <= 3; j++) {
+            y = x[j].getElementsByTagName("input");
+            // A loop that checks every input field in the current tab:
+            for (i = 0; i < y.length; i++) {
+                // If a field is empty...
+                if (y[i].hasAttribute("checked")) {
+                    valid = true;
+                }
+            }
+        }
+        return valid; // return the valid status
+    }
+    function submitprompt() {
+        console.log("hello");
+        // var status = validateForm();
+        form = document.getElementById("regForm");
+        data = form.s
+        document.getElementById("regForm").submit();
+
+
+    }
+    function fixStepIndicator(n) {
+        // This function removes the "active" class of all steps...
+        var i, x = document.getElementsByClassName("step");
+        for (i = 0; i < x.length; i++) {
+            x[i].className = x[i].className.replace(" active", "");
+        }
+        //... and adds the "active" class on the current step:
+        x[n].className += " active";
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+{% endblock content%}

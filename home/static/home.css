@@ -1,0 +1,26 @@
+div{
+    display: block;
+}
+.root{
+width: 100%;
+display: flex;
+flex-direction: column;
+-webkit-box-align: center;
+align-items: center;
+}
+.inner{
+position: fixed;
+inset: 0px;
+width: 100%;
+height: 100%;
+background-size: cover;
+z-index: -1;
+}
+.background{
+margin-top: 74px;
+width: 100%;
+display: flex;
+-webkit-box-pack: center;
+justify-content: center;
+}
+
