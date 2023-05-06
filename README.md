@@ -1,4 +1,4 @@
-#NutriMate - Nepali Meal Recommendation System
+# NutriMate - Nepali Meal Recommendation System
 NutriMate is a Django-based meal recommendation system that offers personalized food recommendations for Nepali cuisine based on specific dietary requirements. The system provides customized meal plans, grocery lists, and recipe suggestions using advanced machine learning algorithms, taking into account each user's unique dietary needs, food preferences, and health goals.
 
 #Features
